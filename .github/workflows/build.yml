@@ -1,0 +1,48 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Make build script executable
+      run: chmod +x scripts/build-ci.sh
+
+    - name: Build project
+      run: ./scripts/build-ci.sh
+      env:
+        NODE_ENV: test
+        CI: true
+        # Fallback values for CI builds
+        ENCRYPTION_KEY: "fallback-encryption-key-for-ci-builds-only"
+        HMAC_SECRET: "fallback-hmac-secret-for-ci-builds-only"
+        ADMIN_SECRET_KEY: "fallback-admin-key-for-ci-builds-only"
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist-${{ matrix.node-version }}
+        path: dist/
+        retention-days: 7

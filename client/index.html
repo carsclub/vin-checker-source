@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Analytics and AdSense will be loaded dynamically via React for security -->
+    
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cars History Check - Free VIN Decoder & Vehicle Reports</title>
+    <meta name="description" content="Get instant vehicle history reports with our free VIN decoder. Check accident history, ownership records, and technical specifications for cars in the UAE." />
+    
+    <!-- Open Graph tags for social media sharing -->
+    <meta property="og:title" content="Cars History Check - Free VIN Decoder & Vehicle Reports" />
+    <meta property="og:description" content="Get instant vehicle history reports with our free VIN decoder. Check accident history, ownership records, and technical specifications for cars in the UAE." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.carshistorycheck.com/" />
+    <meta property="og:image" content="https://www.carshistorycheck.com/cars-history-check.png" />
+    <meta property="og:site_name" content="Cars History Check" />
+    
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Cars History Check - Free VIN Decoder & Vehicle Reports" />
+    <meta name="twitter:description" content="Get instant vehicle history reports with our free VIN decoder. Check accident history, ownership records, and technical specifications for cars in the UAE." />
+    <meta name="twitter:image" content="https://www.carshistorycheck.com/cars-history-check.png" />
+    
+    <!-- Additional SEO meta tags -->
+    <meta name="keywords" content="VIN decoder, vehicle history report, car history check, UAE cars, free VIN check, accident history, ownership records" />
+    <meta name="author" content="Cars History Check" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.carshistorycheck.com/" />
+    
+    <!-- Structured Data for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Cars History Check",
+      "url": "https://www.carshistorycheck.com",
+      "description": "Professional VIN decoder and vehicle history reports service for UAE, Europe, and Africa",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.carshistorycheck.com/vin-checker?vin={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Cars History Check",
+        "url": "https://www.carshistorycheck.com"
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Cars History Check",
+      "url": "https://www.carshistorycheck.com",
+      "logo": "https://www.carshistorycheck.com/cars-history-check.png",
+      "description": "Leading provider of VIN decoding and vehicle history reports",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+971-XXX-XXXX",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Arabic"]
+      },
+      "sameAs": [
+        "https://www.facebook.com/carshistorycheck",
+        "https://www.instagram.com/carshistorycheck"
+      ],
+      "areaServed": ["United Arab Emirates", "Europe", "Africa"],
+      "serviceType": "Vehicle History Reports"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "VIN Decoder Service",
+      "description": "Free VIN decoding service that provides detailed vehicle information including make, model, year, engine specifications, and history reports",
+      "provider": {
+        "@type": "Organization",
+        "name": "Cars History Check"
+      },
+      "areaServed": ["United Arab Emirates", "Europe", "Africa"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "VIN Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Free VIN Decode",
+              "description": "Basic vehicle information from VIN"
+            },
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Full Vehicle History Report",
+              "description": "Comprehensive vehicle history including accidents, ownership, and auction data"
+            },
+            "price": "20",
+            "priceCurrency": "USD"
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://js.stripe.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://api.stripe.com" />
+    <link rel="dns-prefetch" href="https://api.auto.dev" />
+    
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+      /* Critical loading styles to prevent layout shift */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        background: #f8fafc;
+      }
+      .loading-skeleton {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+      }
+      @keyframes loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Loading fallback to prevent blank page -->
+      <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f8fafc;">
+        <div style="text-align: center; padding: 2rem;">
+          <div class="loading-skeleton" style="width: 200px; height: 60px; margin: 0 auto 1rem; border-radius: 8px;"></div>
+          <p style="color: #64748b; font-weight: 500;">Loading Cars History Check...</p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

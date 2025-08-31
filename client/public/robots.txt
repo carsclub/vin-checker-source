@@ -1,0 +1,50 @@
+# Security-focused robots.txt
+# Allow legitimate search engines but block scraping
+
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /contact
+Allow: /faq
+Allow: /blog/
+
+# Block access to sensitive areas
+Disallow: /api/
+Disallow: /admin/
+Disallow: /server/
+Disallow: /node_modules/
+Disallow: /.env
+Disallow: /src/
+Disallow: /shared/
+
+# Block common scraping tools
+User-agent: HTTrack
+Disallow: /
+
+User-agent: wget
+Disallow: /
+
+User-agent: EmailCollector
+Disallow: /
+
+User-agent: EmailSiphon
+Disallow: /
+
+User-agent: WebBandit
+Disallow: /
+
+User-agent: EmailWolf
+Disallow: /
+
+# Allow legitimate search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Sitemap
+Sitemap: https://carshistorycheck.replit.app/sitemap.xml

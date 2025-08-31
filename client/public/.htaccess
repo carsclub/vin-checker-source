@@ -1,0 +1,40 @@
+# Frontend Security Protection
+# Prevent direct access to source files and configuration
+
+# Block access to development files
+<FilesMatch "\.(tsx?|jsx?|ts|js\.map|env|log|md)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block access to configuration files
+<FilesMatch "(package\.json|vite\.config|tsconfig|\.gitignore|\.replit)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block access to node_modules and source directories
+RedirectMatch 404 ^/(node_modules|src|server|shared)/.*$
+
+# Security headers
+Header always set X-Content-Type-Options nosniff
+Header always set X-Frame-Options DENY
+Header always set X-XSS-Protection "1; mode=block"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+# Hide server information
+Header unset Server
+Header set Server "CarsClub-Secure"
+
+# Prevent hotlinking and unauthorized access
+SetEnvIfNoCase Referer "^https://carshistorycheck\.replit\.app" local_referer
+SetEnvIfNoCase Referer "^https://www\.carsclub\.ae" local_referer
+SetEnvIfNoCase Referer "^https://carsclub\.ae" local_referer
+
+# Cache control for security
+<FilesMatch "\.(js|css|png|jpg|jpeg|gif|ico|svg)$">
+    Header set Cache-Control "public, max-age=31536000"
+</FilesMatch>
+
+# Prevent directory browsing
+Options -Indexes
